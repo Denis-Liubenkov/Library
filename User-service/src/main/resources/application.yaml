@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: User-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+    consul:
+      host: ${CONSUL_HOST}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}-${random.value}
+  config:
+    import: "optional:configserver:http:/config-server:8888"
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+resilience4j:
+  circuit-breaker:
+    instances:
+      userService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+kafka:
+  bootstrap-servers: kafka:9092
+  consumer:
+    group-id: ${spring.application.name}-group
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer

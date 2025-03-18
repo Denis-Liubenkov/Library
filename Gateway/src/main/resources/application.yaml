@@ -1,0 +1,37 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Gateway
+  cloud:
+    consul:
+      host: ${CONSUL_HOST}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        instance-id: ${spring.application.name}-${random.value}
+        enabled: true
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+  config:
+    import: "optional:configserver:http://config-server:8888"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+#  # Kafka Configuration
+#kafka:
+#  bootstrap-servers: kafka:9092
+#  consumer:
+#    group-id: ${spring.application.name}-group
+#    auto-offset-reset: earliest
+#    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#  producer:
+#    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+

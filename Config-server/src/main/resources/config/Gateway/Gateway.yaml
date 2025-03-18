@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: books-service
+          uri: lb://books-service
+          predicates:
+            - Path=/books/**
+        - id: User-service
+          uri: lb://User-service
+          predicates:
+            - Path=/users/**
+        - id: Order-service
+          uri: lb://Order-service
+          predicates:
+            - Path=/orders/**
+        - id: AuthenticationMs
+          uri: lb://AuthenticationMs
+          predicates:
+            - Path=/auth/**
+
+
+

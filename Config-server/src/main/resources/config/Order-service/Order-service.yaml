@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Order-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL_ORDERS}
+    username: ${SPRING_DATASOURCE_USERNAME_ORDERS}
+    password: ${SPRING_DATASOURCE_PASSWORD_ORDERS}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME_ORDERS}

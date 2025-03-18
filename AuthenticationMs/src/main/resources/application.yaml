@@ -1,0 +1,50 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: AuthenticationMs
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+    consul:
+      host: ${CONSUL_HOST}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}-${random.value}
+  config:
+    import: "optional:configserver:http://config-server:8888"
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+jwt:
+  secret: GDHJKGDFFfjsdgfsdfdfdttyyuoyuoiupupiupiopop6796979
+  expiration: 3600000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  # Kafka Configuration
+kafka:
+  bootstrap-servers: kafka:9092
+  consumer:
+    group-id: ${spring.application.name}-group
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+
+
+
+
+

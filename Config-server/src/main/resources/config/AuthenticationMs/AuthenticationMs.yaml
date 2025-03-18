@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Authenticationms
+  datasource:
+    url: ${SPRING_DATASOURCE_URL_AUTH}
+    username: ${SPRING_DATASOURCE_USERNAME_AUTH}
+    password: ${SPRING_DATASOURCE_PASSWORD_AUTH}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME_AUTH}

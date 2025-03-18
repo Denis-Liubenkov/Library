@@ -1,0 +1,5 @@
+CREATE DATABASE "Books";
+CREATE DATABASE "Users";
+CREATE DATABASE "Orders";
+CREATE DATABASE "SecurityCredentials";
+

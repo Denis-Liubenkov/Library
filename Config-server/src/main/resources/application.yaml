@@ -1,0 +1,25 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:native}
+  cloud:
+    consul:
+      host: ${CONSUL_HOST}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        enabled: true
+    config:
+      server:
+        native:
+          search-locations: "[classpath:/, classpath:/config, classpath:/config/{application}, classpath:/config/{application}/{profile}]"
+        bootstrap: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
