@@ -14,7 +14,6 @@ public class OrderProducer {
     }
 
     public void sendMessage(OrderDTO orderDTO) {
-
         String TOPIC = "new-orders";
         kafkaTemplate.send(TOPIC, orderDTO);
     }

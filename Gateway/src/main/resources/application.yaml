@@ -15,23 +15,11 @@ spring:
         enabled: true
         service-id: config-server
   config:
-    import: "optional:configserver:http://config-server:8888"
+    import: optional:configserver:"${SPRING_CONFIG_IMPORT}"
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-#  # Kafka Configuration
-#kafka:
-#  bootstrap-servers: kafka:9092
-#  consumer:
-#    group-id: ${spring.application.name}-group
-#    auto-offset-reset: earliest
-#    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#  producer:
-#    key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#    value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 

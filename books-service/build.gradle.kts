@@ -33,8 +33,9 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.2.0")
     implementation("org.springframework.cloud:spring-cloud-config-client:4.2.0")
     implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j:3.2.0")
+    testImplementation("org.springframework.kafka:spring-kafka-test:3.3.4")
+    implementation("org.springframework.kafka:spring-kafka:3.3.4")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.kafka:spring-kafka:3.3.3")
     dependencies {
         testImplementation("com.h2database:h2")
     }

@@ -27,7 +27,6 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery:4.2.0")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.2.0")
     implementation("org.springframework.cloud:spring-cloud-config-client:4.2.0")
-    //implementation("org.springframework.kafka:spring-kafka:3.3.3")
 }
 
 dependencyManagement {
