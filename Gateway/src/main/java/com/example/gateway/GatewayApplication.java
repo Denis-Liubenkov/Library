@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 public class GatewayApplication {
 
     public static void main(String[] args) {
+        System.out.println(System.getenv("TEST_URL"));
         SpringApplication.run(GatewayApplication.class, args);
     }
 
