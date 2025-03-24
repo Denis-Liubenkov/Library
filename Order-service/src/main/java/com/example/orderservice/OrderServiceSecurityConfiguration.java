@@ -34,6 +34,7 @@ public class OrderServiceSecurityConfiguration {
                                 .requestMatchers(HttpMethod.POST, "/orders").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.PUT, "/orders/{id}").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/orders/{id}").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(orderFilter, UsernamePasswordAuthenticationFilter.class)

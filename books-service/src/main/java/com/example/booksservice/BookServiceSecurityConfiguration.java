@@ -33,6 +33,7 @@ public class BookServiceSecurityConfiguration {
                                 .requestMatchers(HttpMethod.POST, "/books").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.PUT, "/books/{id}").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/books/{id}").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(bookFilter, UsernamePasswordAuthenticationFilter.class)

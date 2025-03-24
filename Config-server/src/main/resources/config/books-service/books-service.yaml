@@ -2,11 +2,11 @@ spring:
   application:
     name: books-service
   datasource:
-    url: ${SPRING_DATASOURCE_URL_BOOKS}
-    username: ${SPRING_DATASOURCE_USERNAME_BOOKS}
-    password: ${SPRING_DATASOURCE_PASSWORD_BOOKS}
-    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME_BOOKS}
+    url: ${URL_BOOKS}
+    username: ${USERNAME_BOOKS}
+    password: ${PASSWORD_BOOKS}
+    driver-class-name: ${DRIVER_CLASS_NAME_BOOKS}
   data:
     mongodb:
-      uri: ${SPRING_DATA_MONGODB_URI_BOOKS}
+      uri: ${MONGODB_URI_BOOKS}
 

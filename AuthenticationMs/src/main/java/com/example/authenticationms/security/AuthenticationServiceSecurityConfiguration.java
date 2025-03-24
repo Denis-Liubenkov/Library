@@ -33,6 +33,7 @@ public class AuthenticationServiceSecurityConfiguration {
                         auth
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/auth/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

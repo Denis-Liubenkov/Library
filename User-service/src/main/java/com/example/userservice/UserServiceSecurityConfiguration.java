@@ -35,6 +35,7 @@ public class UserServiceSecurityConfiguration {
                                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("USER")
                                 .requestMatchers(HttpMethod.PUT, "/users/{id}").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/actuator/health").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

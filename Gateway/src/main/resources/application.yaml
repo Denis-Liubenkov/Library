@@ -15,7 +15,7 @@ spring:
         enabled: true
         service-id: config-server
   config:
-    import: optional:configserver:"${SPRING_CONFIG_IMPORT}"
+    import: optional:configserver:${URL}
 management:
   endpoints:
     web:

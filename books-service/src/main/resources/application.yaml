@@ -25,7 +25,7 @@ spring:
         enabled: true
         instance-id: ${spring.application.name}-${random.value}
   config:
-    import: optional:configserver:"${SPRING_CONFIG_IMPORT}"
+    import: optional:configserver:${URL}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
@@ -44,4 +44,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
